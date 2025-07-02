@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Firebase Token Generator</title>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  </head>
+  <body>
+    <h2>Login to Get Firebase ID Token</h2>
+    <button onclick="signIn()">Sign In with Google</button>
+    <pre id="token"></pre>
+
+    <script>
+      // 🔁 Replace with your own Firebase config
+      const firebaseConfig = {
+        apiKey: "AIzaSyCNqkA3x0_XZ9y1E6Ce7sVtu8W7EnGjLc8",
+        authDomain: "todo-list-8383f.firebaseapp.com",
+        projectId: "todo-list-8383f",
+        appId: "1:971803049035:web:9d1b9b3c46ee2d304321ce"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      async function signIn() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        const result = await firebase.auth().signInWithPopup(provider);
+        const token = await result.user.getIdToken();
+        document.getElementById("token").textContent = token;
+        console.log("ID Token:", token);
+      }
+    </script>
+  </body>
+</html>
