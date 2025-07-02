@@ -4,6 +4,9 @@ import { connectDB } from "./config/db.js";
 import { initSocket } from "./socket/index.js";
 import taskRoutes from "./routes/taskRoutes.js";
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const PORT = process.env.PORT || 5000;
 
 // Connect to database

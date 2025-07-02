@@ -196,12 +196,8 @@ export const getMyTasks = async (req, res) => {
 export const getSharedTasks = async (req, res) => {
   try {
     const userEmail = req.user.email.toLowerCase();
-    const userId = req.user.mongoId;
     const tasks = await Task.find({
-      $or: [
-        { collaborators: userEmail },
-        { createdBy: userId }
-      ]
+      collaborators: userEmail
     });
     console.log("Shared tasks for:", userEmail, "Count:", tasks.length);
     res.json(tasks);
