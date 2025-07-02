@@ -142,8 +142,7 @@ Edit
     Socket.IO           Firebase Admin
        |
    Real-Time Events
-📹 Loom Video Demo
-🎥 Watch the demo here
+
 
 💡 Assumptions
 Only Google OAuth was implemented for authentication.
