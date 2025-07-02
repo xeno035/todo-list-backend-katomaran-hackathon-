@@ -1,11 +1,12 @@
 // middleware/authenticateJWT.js
-import { initializeApp, applicationDefault, cert } from "firebase-admin/app";
+import admin from 'firebase-admin';
+import serviceAccount from '../firebase-service-account.json' assert { type: "json" };
 import { getAuth } from "firebase-admin/auth";
 import User from "../models/user.js";
 
 // Initialize Firebase Admin SDK
-initializeApp({
-  credential: cert("./firebase-service-account.json"),
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
 });
 
 export const authenticateJWT = async (req, res, next) => {
